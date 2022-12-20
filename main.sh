@@ -12,9 +12,10 @@ DATE=$(date +"%Y-%m-%d %T")
 echo $DATE >> $SUCCESS_FILE
 echo $DATE >> $ERROR_FILE
 
-if http -h www.google.es >> $SUCCESS_FILE 2>> $ERROR_FILE; then
+if http -h https://www.google.es >> $SUCCESS_FILE 2>> $ERROR_FILE; then
     echo "Connection up" >> $SUCCESS_FILE
 else
+    # nordvpn rate 1> /dev/null 2>> $ERROR_FILE
     nordvpn c 1> /dev/null 2>> $ERROR_FILE
     echo "Reconnected!" >> $SUCCESS_FILE
 fi
